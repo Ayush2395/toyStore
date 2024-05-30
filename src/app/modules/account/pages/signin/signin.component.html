@@ -1,0 +1,34 @@
+<section class="h-full flex justify-center items-center">
+    <div class="w-full card max-w-[400px] bg-base-100 shadow-md px-5 py-2">
+        <h4 class="text-3xl mb-3">Signin to ToyStore</h4>
+        <form [formGroup]="loginForm" (submit)="signin()">
+            <div class="form-group mb-3">
+                <label for="email" class="block mb-1.5">Email address</label>
+                <div class="join w-full">
+                    <span class="join-item btn btn-sm btn-accent"><ng-icon name="heroAtSymbol"></ng-icon></span>
+                    <input formControlName="email" type="email" name="email" id="email" placeholder="john@example.com"
+                        class="input input-sm input-bordered join-item w-full">
+                </div>
+                @if (email?.invalid && (email?.dirty||email?.touched )&& email?.hasError("email") ) {
+                <span class="text-sm text-error mb-1.5">Please enter valid email address.</span>
+                }
+            </div>
+            <div class="form-group mb-3">
+                <label for="password" class="block mb-1.5">Password</label>
+                <div class="join w-full">
+                    <span (click)="showPwd=!showPwd" class="join-item btn btn-sm btn-accent"><ng-icon
+                            [name]="showPwd?'heroEye':'heroEyeSlash'"></ng-icon></span>
+                    <input formControlName="password" [type]="showPwd?'text':'password'" name="password" id="password"
+                        placeholder="*******" class="input input-sm input-bordered join-item w-full">
+                </div>
+            </div>
+            <button [disabled]="!password?.value" type="submit"
+                class="btn btn-sm btn-primary w-full mb-3">Signin</button>
+        </form>
+    </div>
+    @if (errors.error) {
+    <div class="toast">
+        <div class="alert alert-error">{{errors.message}}</div>
+    </div>
+    }
+</section>
