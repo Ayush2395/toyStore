@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector, effect, inject, signal } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
-import { ICreds, IProducts, IToken, IUser } from '../models/model';
+import { ICategory, ICreds, IProducts, IToken, IUser } from '../models/model';
 import { Router } from '@angular/router';
 
 const baseUrl = 'https://api.escuelajs.co';
@@ -18,6 +18,7 @@ export class ApiService {
   private http = inject(HttpClient);
   private injector = inject(Injector);
   private router = inject(Router);
+  public searchValue: string = '';
 
   public user = signal<IUser | null>(null);
   public tokenSignal = signal<IToken>({ access_token: "", refresh_token: "" });
@@ -49,5 +50,10 @@ export class ApiService {
   public logout = () => {
     localStorage.removeItem('token');
     this.router.navigate(['/signin']);
+    this.user.set(null);
   };
+
+  public getAllCategories = () => this.http
+    .get<ICategory[]>(baseUrl + '/api/v1/categories', httpHeaders)
+    .pipe(catchError(err => throwError(err)));;
 }

@@ -1,0 +1,8 @@
+@for (category of categories; track category.id) {
+<div class="form-control">
+    <label [for]="category.id" class="label cursor-pointer">
+        <span>{{category.name}}</span>
+        <input type="checkbox" name="cat" [id]="category.id" class="checkbox checkbox-sm checkbox-primary">
+    </label>
+</div>
+}

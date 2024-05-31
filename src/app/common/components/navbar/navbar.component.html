@@ -1,7 +1,12 @@
-<div class="navbar bg-base-100 sticky top-0 shadow-md z-[1]">
-    <div class="flex-1">
+<div class="navbar justify-between items-center bg-base-100 sticky top-0 shadow-md z-[1]">
+    <div class="">
         <a routerLink="/home" class="btn btn-ghost text-xl">ToyStore</a>
     </div>
+    <label class="hidden input input-sm input-bordered rounded-full md:flex items-center gap-2">
+        <input #search [(ngModel)]="api.searchValue" type="search" name="search" id="search"
+            placeholder="Search product by name, category or price">
+        <kbd class="kbd kbd-sm">Ctrl</kbd> + <kbd class="kbd kbd-sm">k</kbd>
+    </label>
     <div class="flex-none">
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
@@ -34,7 +39,8 @@
                     </a>
                 </li>
                 <li><a>Settings</a></li>
-                <li><button type="button" class="btn btn-sm btn-ghost text-left" (click)="logout()">Logout</button></li>
+                <li><button type="button" class="btn btn-sm btn-error justify-start" (click)="logout()">Logout</button>
+                </li>
             </ul>
         </div>
     </div>

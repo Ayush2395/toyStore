@@ -8,9 +8,7 @@ export class SearchPipe implements PipeTransform {
 
   transform(value: IProducts[], searchValue: string): IProducts[] {
     return value.filter(item => item.category.name.toLowerCase().includes(searchValue)
-      || item.title.toLowerCase().includes(searchValue)
-      || item.title.toLowerCase().includes(searchValue)
-      || item.price === Number(searchValue));
+      || item.title.toLowerCase().includes(searchValue));
   }
 
 }

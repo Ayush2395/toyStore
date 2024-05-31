@@ -39,7 +39,7 @@ export class SigninComponent {
         next: (token) => {
           if (token) {
             localStorage.setItem('token', JSON.stringify(token));
-            this.api.tokenSignal.set(token);
+            this.api.tokenSignal.update(s=>token);
             this.router.navigate(['/home']);
           }
         },

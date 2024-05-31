@@ -14,6 +14,7 @@ import { AuthInterceptor } from './common/interceptor/auth.interceptor';
 import { ProductCardComponent } from './common/components/product-card/product-card.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './common/pipes/search.pipe';
+import { CheckBoxComponent } from './common/components/check-box/check-box.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchPipe } from './common/pipes/search.pipe';
     NavbarComponent,
     HomeComponent,
     ProductCardComponent,
-    SearchPipe
+    SearchPipe,
+    CheckBoxComponent
   ],
   imports: [
     BrowserModule,

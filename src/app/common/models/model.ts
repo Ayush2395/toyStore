@@ -6,10 +6,10 @@ export interface IProducts {
     images: string[];
     creationAt: Date;
     updatedAt: Date;
-    category: Category;
+    category: ICategory;
 }
 
-export interface Category {
+export interface ICategory {
     id: number;
     name: string;
     image: string;
