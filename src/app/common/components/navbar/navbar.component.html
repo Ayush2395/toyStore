@@ -28,7 +28,11 @@
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">
-                    <img alt="Tailwind CSS Navbar component" [src]="user()?.avatar" />
+                    @if(user()!==null){
+                    <img alt="Profile-pic" [src]="user()?.avatar" />
+                    }@else {
+                    <div class="mask mask-circle h-10 w-10 bg-orange-500 flex justify-center items-center">G</div>
+                    }
                 </div>
             </div>
             <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -39,7 +43,13 @@
                     </a>
                 </li>
                 <li><a>Settings</a></li>
-                <li><button type="button" class="btn btn-sm btn-error justify-start" (click)="logout()">Logout</button>
+                <li>
+                    @if(api.user()!==null){
+                    <button type="button" class="btn btn-sm btn-error justify-start" (click)="logout()">Logout</button>
+                    }@else{
+                    <button type="button" class="btn btn-sm btn-primary justify-start"
+                        routerLink="/account/signin">Login</button>
+                    }
                 </li>
             </ul>
         </div>

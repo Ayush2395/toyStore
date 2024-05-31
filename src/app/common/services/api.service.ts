@@ -46,7 +46,7 @@ export class ApiService {
 
   public logout = () => {
     localStorage.removeItem('token');
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/account/signin']);
     this.user.set(null);
   };
 
