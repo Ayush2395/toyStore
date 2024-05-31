@@ -1,1 +1,21 @@
-<p>product-items works!</p>
+<div class="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+    <div class="carousel carousel-center space-x-8 bg-neutral p-4 w-full md:h-96 h-56 rounded-md">
+        @for (image of productItem?.images; track $index) {
+        <div class="carousel-item w-full">
+            <img [src]="image" [alt]="'item-'+$index" class="w-full rounded-md">
+        </div>
+        }
+    </div>
+    <div>
+        <p class="text-4xl mb-1.5 w-full truncate font-bold py-1.5">{{productItem?.title}}</p>
+        <div class="badge badge-sm badge-neutral mb-3">Cagetory : {{productItem?.category?.name}}</div>
+        <p class="mb-2.5 text-success font-semibold">Price : {{productItem?.price | currency:"INR"}}</p>
+        <p class="mb-1.5 font-semibold text-primary">Product description:</p>
+        <p class="md:text-[18px] md:text-justify mb-3">{{productItem?.description}}</p>
+        <div class="btn-group">
+            <button type="button" class="btn btn-accent me-1.5">Add to cart <ng-icon class="text-[16px]" name="heroPlus"></ng-icon></button>
+            <button type="button" class="btn btn-neutral ms-1.5">Buy now <ng-icon class="text-[16px]"
+                    name="heroShoppingCart"></ng-icon></button>
+        </div>
+    </div>
+</div>

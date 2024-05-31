@@ -35,9 +35,6 @@ export class ApiService {
     });
   }, { allowSignalWrites: true, injector: this.injector });
 
-  public getProducts = () => this.http
-    .get<IProducts[]>(baseUrl + '/api/v1/products', httpHeaders)
-    .pipe(catchError(erro => throwError(erro)));
 
   public login = (creds: ICreds) => this.http
     .post<IToken>(baseUrl + '/api/v1/auth/login', creds)
@@ -53,7 +50,15 @@ export class ApiService {
     this.user.set(null);
   };
 
+  public getProducts = () => this.http
+    .get<IProducts[]>(baseUrl + '/api/v1/products', httpHeaders)
+    .pipe(catchError(erro => throwError(erro)));
+
+  public getProductsById = (id: string) => this.http
+    .get<IProducts>(baseUrl + '/api/v1/products/' + id, httpHeaders)
+    .pipe(catchError(err => throwError(err)));
+
   public getAllCategories = () => this.http
     .get<ICategory[]>(baseUrl + '/api/v1/categories', httpHeaders)
-    .pipe(catchError(err => throwError(err)));;
+    .pipe(catchError(err => throwError(err)));
 }

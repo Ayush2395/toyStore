@@ -8,13 +8,14 @@ import { AccountModule } from './modules/account/account.module';
 import { HomeComponent } from './common/components/home/home.component';
 import { ProductsModule } from './modules/products/products.module';
 import { NgIconsModule } from '@ng-icons/core';
-import { heroArrowRight, heroMagnifyingGlass, heroMagnifyingGlassCircle, heroShoppingCart } from '@ng-icons/heroicons/outline';
+import { heroArrowRight, heroExclamationCircle, heroMagnifyingGlass, heroMagnifyingGlassCircle, heroShoppingCart } from '@ng-icons/heroicons/outline';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './common/interceptor/auth.interceptor';
 import { ProductCardComponent } from './common/components/product-card/product-card.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './common/pipes/search.pipe';
 import { CheckBoxComponent } from './common/components/check-box/check-box.component';
+import { NotFoundComponent } from './common/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CheckBoxComponent } from './common/components/check-box/check-box.compo
     HomeComponent,
     ProductCardComponent,
     SearchPipe,
-    CheckBoxComponent
+    CheckBoxComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { CheckBoxComponent } from './common/components/check-box/check-box.compo
     ProductsModule,
     HttpClientModule,
     FormsModule,
-    NgIconsModule.withIcons({ heroShoppingCart, heroMagnifyingGlass, heroArrowRight })
+    NgIconsModule.withIcons({ heroShoppingCart, heroMagnifyingGlass, heroArrowRight,heroExclamationCircle })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

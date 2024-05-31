@@ -4,16 +4,18 @@
         class="card shadow-md bg-base-100 p-2.5 md:p-4 h-64 cursor-pointer hover:scale-105 hover:z-10 transition-all duration-300">
         <div class="carousel h-36 w-full rounded-box mb-2.5">
             @for (image of product.images; track $index) {
+            @if (image) {
             <div class="carousel-item w-full">
                 <img class="w-full" [src]="image" [alt]="product.id">
             </div>
+            }
             }
         </div>
         <p class="mb-0.5 font-semibold text-[18px] truncate w-full">{{product.title}}</p>
         <p class="text-success text-sm mb-1.5"><span class="text-semibold">Price: </span>{{product.price | currency
             :"INR" }}
         </p>
-        <a [routerLink]="'product-item'" [queryParams]="{productId:product.id}"
+        <a [routerLink]="'/products/product-item'" [queryParams]="{productId:product.id}"
             class="btn btn-sm btn-accent rounded-full">View
             <ng-icon name="heroArrowRight"></ng-icon></a>
     </div>
@@ -21,8 +23,8 @@
     <div class="text-2xl">No Products found.</div>
     }
     @if (products.length===0) {
-        <div class="h-full">
-            <span class="loading loading-sm loading-bars"></span>
-        </div>
+    <div class="h-full">
+        <span class="loading loading-sm loading-bars"></span>
+    </div>
     }
 </div>
